@@ -1,0 +1,42 @@
+#include <conio.h>
+#include <string.h>
+#include <iostream>
+using namespace std;
+
+int main(){
+    int a, n;
+    char string1[5], string2[5], string3[5];
+    char sep [10]="^";
+    char *istr;
+    printf("n= \n");
+    scanf("%d", &n);
+    printf("a= \n");
+    scanf("%d", &a);
+    printf("enter string 1\n");
+    scanf("%s",&string1);
+    printf("enter string 2\n");
+    scanf("%s n",&string2);
+
+    printf("Task 1 \n");
+    strncat(string1,string2,n);
+    printf("%s \n",string1);
+
+    printf("Task 2 \n");
+    if (strncmp (string1, string2, n)==0){
+        printf("Odinakovu \n");
+    }
+
+    printf("Task 6 \n");                             //Осуществить копирование первых n символов одной строки в другую строку.
+    printf("%i \n",strncpy (string1,string2,n));
+
+    printf("Task 8 \n");                             //Осуществить поиск в строке первого вхождения указанного символа
+    printf("% \n",strchr(string1,a));
+
+    printf("Task 13 \n");                            //Выделить из одной строки лексемы (кусочки), разделенные любым из множества символов (разделителей), входящих во вторую строку
+    istr = strtok (string1,sep);
+    while (istr != NULL){
+        printf ("%s\n",istr);
+        istr = strtok (NULL,sep);
+    }
+    return 0;
+}
