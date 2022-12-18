@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int sum(int m){
+    if (m == 0) return 0;
+    return (m % 10 + sum(m / 10));
+}
+///////////////////////////////////////////
+int main(void){
+    int n;
+    printf("3) n= ");
+    scanf_s("%d", &n);
+    int number = n;
+    int arr[4];
+    int count = 0, i;
+///////////////////////////////////////////
+    int m;
+    printf("4) m= ");
+    scanf_s("%d", &m);
+    int result = sum(m);
+///////////////////////////////////////////
+    while(number){
+        arr[count++] = number % 10;
+        number /= 10;
+    }
+
+    printf("3) MASSIV UZ CHISEL N:  ");
+    for ( i = 0; i < 4; ++i) printf("%d ", arr[i]);
+    printf("\n");
+//////////////////////////////////////////
+    printf("4) SUMMA CIFR CHISLA M:  ");
+    printf("%d ", result);
+    return 0;
+}
