@@ -1,0 +1,85 @@
+#include <iostream>
+
+bool IsSimple(int n)
+{
+    bool Res = true;
+    for (int i=2; i<n; i++)
+        if (n % i == 0)
+        {
+            Res = false;
+            break;
+        }
+    return Res;
+}
+////////////////////////////////////////////////////////////////////
+int main() {
+    int a;
+    printf("a= \n" );
+    scanf("%d", &a);
+    switch (a / 100)
+    {
+        case 1: printf("one hundred "); break;
+        case 2: printf("two hundred "); break;
+        case 3: printf("three hundred "); break;
+        case 4: printf("four hundred "); break;
+        case 5: printf("five hundred "); break;
+        case 6: printf("six hundred "); break;
+        case 7: printf("seven hundred "); break;
+        case 8: printf("eight hundred "); break;
+        case 9: printf("nine hundred "); break;
+    }
+
+    switch ((a % 100) / 10)
+    {
+        case 2: printf("twenty "); break;
+        case 3: printf("thirty "); break;
+        case 4: printf("forty "); break;
+        case 5: printf(""); break;
+        case 6: printf(""); break;
+        case 7: printf(""); break;
+        case 8: printf(""); break;
+        case 9: printf(""); break;
+    }
+
+    if (a % 100 >= 10 & a % 100 < 20) {
+        switch (a % 100) {
+            case 10: printf("ten "); break;
+            case 11: printf("eleven "); break;
+            case 12: printf("twelve "); break;
+            case 13: printf("thirteen "); break;
+            case 14: printf(""); break;
+            case 15: printf(""); break;
+            case 16: printf(""); break;
+            case 17: printf(""); break;
+            case 18: printf(""); break;
+            case 19: printf(""); break;
+        }
+    }
+    else {
+        switch (a % 10)
+        {
+            case 0: printf("zero"); break;
+            case 1: printf("one"); break;
+            case 2: printf("two"); break;
+            case 3: printf("three"); break;
+            case 4: printf("four"); break;
+            case 5: printf("five"); break;
+            case 6: printf("six"); break;
+            case 7: printf("seven"); break;
+            case 8: printf("eight"); break;
+            case 9: printf("nine"); break;
+        }
+    }
+    printf("\n" );
+////////////////////////////////////////////////////////////////////
+    int n;
+    printf("n= \n" );
+    scanf("%d", &n);
+    printf("simple numbers: \n");
+    for (int i=2; i<=n; i++)
+    {
+        if (IsSimple(i))
+            printf("%d \n", i);
+    }
+    return 0;
+}
