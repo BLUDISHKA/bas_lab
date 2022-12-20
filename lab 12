@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+void filecopy(FILE *from, FILE *to) {
+    unsigned char c;
+    while (!feof(from)) {
+        fread (&c,1,1,from);
+        fwrite (&c,1,1,to);
+    }
+}
+////////////////////////////////////////////////////////
+int main(char* ptt[]) {
+    FILE *doc_1, *doc_2, *doc_3;
+    doc_1 = fopen(ptt[1],"r");
+    if (doc_1==NULL){
+        return 1;
+    }
+    doc_3 = fopen(ptt[3],"w");
+    if (doc_3==NULL){
+        return 1;
+    }
+    filecopy(doc_1, doc_3);
+    fclose(doc_1);
+    doc_2 = fopen(ptt[2],"r");
+    if (doc_2==NULL){
+        return 1;
+    }
+    filecopy(doc_2,doc_3);
+    fclose(doc_2);
+    fclose(doc_3);
+    return 0;
+}
