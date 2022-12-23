@@ -1,0 +1,16 @@
+//
+// Created by mikos on 23.12.2022.
+//
+
+#ifndef UNTITLED1_LAB11H_H
+#define UNTITLED1_LAB11H_H
+struct Coordinates{
+    int x1, y1;
+    int x2, y2;
+    int x3, y3;
+    int x4, y4;
+};
+
+int Square(struct Coordinates tmp);
+float Perimeter(struct Coordinates tmp);
+#endif //UNTITLED1_LAB11H_H
