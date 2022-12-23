@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <sys/time.h> //gettimeofday, struct timeval (для времени)
+//////////////////////////////////////
+struct time{
+    long tv_sec; //секунды
+    long tv_usec; //мил. секунды
+};
+//////////////////////////////////////
+long long FibIter(int x){  //подсчет фиб. через цикл
+    int i;
+    long long fib0 = 0;
+    long long fib1 = 1;
+    long long fib;
+    for (i = 1; i < x; ++i){
+        fib = fib0 + fib1;
+        fib0 = fib1;
+        fib1 = fib;
+    }
+    return fib;
+}
+//////////////////////////////////////
+long long FibRec(int x){  //вычисление фибоначи через рекурсию
+    if(x<1){
+        return 0;
+    }
+    if(x<2){
+        return 1;
+    }
+    return FibRec(x-2)+FibRec(x-1);
+}
+//////////////////////////////////////
+int main(){
+    long long x;  //число
+    scanf("%lli", &x);
+    struct timeval start, end; //секундомер, структура начала и конца
+    gettimeofday(&start, NULL);
+    printf("Iteration: %lli\n", FibIter(x));
+    gettimeofday(&end, NULL);
+    long seconds_1 = (end.tv_sec - start.tv_sec);
+    long micros_1 = ((seconds_1 * 1000000) + end.tv_usec) - (start.tv_usec);
+    printf("Elapsed time: %d ", seconds_1);
+    printf("seconds ");
+    printf("and %d ",micros_1);
+    printf("micro seconds\n");
+
+
+    gettimeofday(&start, NULL);
+    printf("Recursion: %lli\n", FibRec(x));
+    gettimeofday(&end, NULL);
+    long seconds_2 = (end.tv_sec - start.tv_sec);
+    long micros_2 = ((seconds_2 * 1000000) + end.tv_usec) - (start.tv_usec);
+    printf("Elapsed time: %d ", seconds_2);
+    printf("seconds ");
+    printf("and %d ",micros_2);
+    printf("micro seconds\n");
+    return 0;
+}
