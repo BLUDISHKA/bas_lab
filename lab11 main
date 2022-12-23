@@ -1,0 +1,32 @@
+#include "lab11h.h"
+#include <math.h>
+#include <stdio.h>
+///////////////////////////////////////////////////
+float Perimeter(struct Coordinates *tmp){
+    float a, b;
+    a = abs(tmp->x1 - tmp->x2);
+    b = sqrt(abs(tmp->y2 - tmp->y3) * abs(tmp->y2 - tmp->y3) + (abs(tmp->x2 - tmp->x3) * abs(tmp->x2 - tmp->x3)));
+    return (a + b) * 2;
+}
+
+int Square(struct Coordinates *arg){
+    return (arg->y1 - arg->y4) * (arg->x2 - arg->x1);
+}
+///////////////////////////////////////////////////
+int main(){
+    //std::ios::sync_with_stdio(false);
+    //std::cin.tie(nullptr);
+    struct Coordinates tmp;
+    printf("Enter coordinates: \n");
+    scanf("%d %d", &tmp.x1, &tmp.y1);
+    scanf("%d %d", &tmp.x2, &tmp.y2);
+    scanf("%d %d", &tmp.x3, &tmp.y3);
+    scanf("%d %d", &tmp.x4, &tmp.y4);
+
+    int s = Square(tmp);
+    int p = Perimeter(tmp);
+
+    printf("%d\n", s);
+    printf("%d\n", p);
+    return 0;
+}
