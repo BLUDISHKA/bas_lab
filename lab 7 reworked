@@ -1,0 +1,91 @@
+#include <stdio.h>
+#include <math.h>
+union{
+    struct{
+        char SD : 1;
+        char Compact_Flash : 1;
+        char MemoyStick : 1;
+    };
+    int bit;
+} condition;
+enum Organization{
+    OOO,ZAO,UP
+};
+/////////////////////////////////////////
+struct Coordinations{
+    double a;
+    double b;
+    double c;
+    double d;
+    double p;
+};
+/////////////////////////////////////////
+float area(struct Coordinations *tmp){
+    double s = sqrt((tmp->a*tmp->c)+(tmp->b*tmp->d));
+    return s;
+}
+/////////////////////////////////////////
+int main(){
+    int n;
+    printf("Vibirete vid organizacii:\n1)OOO\n2)ZAO\n3)UP\n");
+    scanf("%d",&n);
+    switch (n) {
+        case 1:
+            printf("Vi vibrali OOO\n");
+            break;
+        case 2:
+            printf("Vi vibrali ZAO\n");
+            break;
+        case 3:
+            printf("Vi vibrali UP\n");
+            break;
+        default:
+            printf("Takoi organizacii netu\n");
+            break;
+
+    }
+    printf("/////////////////////////////////////////\n");
+    int x1,x2,x3,x0,y1,y2,y3,y0;
+
+    printf("x0 y0: ");
+    scanf("%d %d",&x0,&y0);
+    printf("x1 y1: ");
+    scanf("%d %d",&x1,&y1);
+    printf("x2 y2: ");
+    scanf("%d %d",&x2,&y2);
+    printf("x3 y3: ");
+    scanf("%d %d",&x3,&y3);
+    struct Coordinations tmp;
+    tmp.a = sqrt((x1-x0)*(x1-x0) + (y1-y0)*(y1-y0));
+    tmp.b = sqrt((x2-x0)*(x2-x0) + (y2-y0)*(y2-y0));
+    tmp.c = sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
+    tmp.d = sqrt((x1-x3)*(x1-x3) + (y1-y3)*(y1-y3));
+    tmp.p = (tmp.a+tmp.b+tmp.c+tmp.d);
+    printf("s= %.2f\n", area(&tmp));
+
+    printf("Perimetr = %.2f\n ",tmp.p);
+
+    printf("/////////////////////////////////////////\n");
+
+    printf("bit: ");
+    scanf("%x", &condition.bit);
+
+    if (condition.SD)
+        printf("SD is on\n");
+    else
+        printf("SD is off\n");
+
+
+    if (condition.Compact_Flash)
+        printf("Compact_Flash is on\n");
+    else
+        printf("Compact_Flash is off\n");
+
+
+    if (condition.MemoyStick)
+        printf("MemoyStick is on\n");
+    else
+        printf("MemoyStick is off\n");
+
+    return 0;
+}
